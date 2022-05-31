@@ -1,0 +1,15 @@
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\obj\Debug\net5.0\Rehber.Entity.csproj.AssemblyReference.cache
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\obj\Debug\net5.0\Rehber.Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\obj\Debug\net5.0\Rehber.Entity.AssemblyInfoInputs.cache
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\obj\Debug\net5.0\Rehber.Entity.AssemblyInfo.cs
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\obj\Debug\net5.0\Rehber.Entity.csproj.CoreCompileInputs.cache
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\bin\Debug\net5.0\Rehber.Entity.deps.json
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\bin\Debug\net5.0\Rehber.Entity.runtimeconfig.json
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\bin\Debug\net5.0\Rehber.Entity.runtimeconfig.dev.json
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\bin\Debug\net5.0\Rehber.Entity.dll
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\bin\Debug\net5.0\ref\Rehber.Entity.dll
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\bin\Debug\net5.0\Rehber.Entity.pdb
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\obj\Debug\net5.0\Rehber.Entity.dll
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\obj\Debug\net5.0\ref\Rehber.Entity.dll
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\obj\Debug\net5.0\Rehber.Entity.pdb
+C:\Users\Anilcan\source\repos\RehberProject\Rehber.Entity\obj\Debug\net5.0\Rehber.Entity.genruntimeconfig.cache

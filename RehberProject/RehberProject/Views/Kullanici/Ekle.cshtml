@@ -1,0 +1,98 @@
+﻿@model Rehberr
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+    Rehber.Entity.Model.User user = Context.Session.GetObject<User>("KullaniciAktif");
+}
+
+
+<link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
+<form asp-action="Ekle" asp-controller="Kullanici" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <div class="col-md-4 offset-md-4">
+            <input type="hidden" id="UserId" value="@user.ID" />
+            <center><img src="~/lib/bootstrap-icons/icons/people.svg" alt="" width="350" height="357"></center>
+            <h1 class="h3 mb-3 fw-normal">Register Page</h1>
+
+            <div class="mb-3">
+                <label asp-for="Rehberİsim" class="form-label">Rehber İsmi</label>
+                <input type="text" class="form-control" id="Ad" aria-describedby="emailHelp" asp-for="Rehberİsim" />
+                <span asp-validation-for="Rehberİsim" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Soyisim" class="form-label">Rehber Soyadı</label>
+                <input type="text" class="form-control" id="Soyad" aria-describedby="emailHelp" asp-for="Soyisim" />
+                <span asp-validation-for="Soyisim" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Telno" class="form-label">Tel numarası</label>
+                <input type="text" class="form-control" id="Numara" asp-for="Telno" />
+                <span asp-validation-for="Telno" class="text-danger"></span>
+            </div>
+
+            <a class="w-100 btn btn-lg btn-primary" id="btnGonder">Ekle</a>
+        </div>
+    </div>
+
+
+</form>
+
+
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#btnGonder").click(function () {
+            var vm = {
+                Rehberİsim: $("#Ad").val(),
+                Soyisim: $("#Soyad").val(),
+                Telno: $("#Numara").val(),
+                UserID: $("#UserId").val()
+            };
+            if (vm.Rehberİsim == "" || vm.Rehberİsim == undefined) {
+                toastr.error('Rehber İsmi Giriniz !');
+            }
+
+            if (vm.Soyisim == "" || vm.Soyisim == undefined) {
+                toastr.error('Soy İsmi Giriniz !');
+
+            }
+            if (vm.Telno == "" || vm.Telno == undefined) {
+                toastr.error('Telno Giriniz !');
+
+            }
+
+            var jss = JSON.stringify(vm);
+            $.ajax({
+                url: "http://localhost:25876/api/UserLogin/Add",
+                data: jss,
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (user) {
+                    if (user != null) {
+                        window.location.href = "/Kullanici/Listele"
+
+                    }
+                    else {
+                        window.location.reload();
+                    }
+                },
+                failure: function (er) {
+                    console.log(er);
+                }
+            });
+        });
+    });
+
+</script>

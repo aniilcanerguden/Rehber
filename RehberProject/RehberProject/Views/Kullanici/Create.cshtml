@@ -1,0 +1,66 @@
+﻿@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Create";
+
+}
+
+<form>
+
+    <select id="List" asp-items="@ViewBag.Rehberr">
+
+        <option> Select Name</option>
+
+    </select>
+
+    <select id="SList">
+
+        <option value="-1"> Select State</option>
+
+    </select>
+
+    <select id="LList" >
+
+        <option> Select State</option>
+
+    </select>
+</form>
+
+
+@section Scripts{ 
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#List").change(function () {
+
+                $("#SList").empty();
+                $("#LList").empty();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("Load")',
+                    dataType: 'json',
+                    data: { id: $("#List").val() },
+                    success: function (states) {
+
+                        $("#SList").append('<option value"' + -1 + '">' +
+                            "Select State" + '</option>');
+                        $.each(states, function (i, state) {
+                            $("#SList").append('<option value"' + state.value + '">' +
+                                state.text + '</option>');
+                        });
+
+                    },
+                    error: function (ex) {
+                        alert('failed to retrieve states .' + ex);
+                    }
+
+                });
+                return false;
+
+            })
+        })
+    </script>
+    
+}*@

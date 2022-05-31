@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+<body>
+    <main class="form-signin">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+               <center> <img class="center" src="~/lib/bootstrap-icons/icons/stop-btn.svg" alt="" width="350" height="357"></center>
+    <h1 class="h3 mb-3 fw-normal">Please Register</h1>
+
+    <div class="form-floating">
+        <input type="email" class="form-control" id="Mail" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" id="Password" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button id="btnKayit" type="submit" class="w-100 btn btn-lg btn-primary">Ekle</button>
+</div>
+        </div>
+    </main>
+
+
+</body>
+
+
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/lib/limonte-sweetalert2/sweetalert2.js"></script>
+<link href="~/lib/limonte-sweetalert2/sweetalert2.css" rel="stylesheet" />
+<link href="~/lib/limonte-sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/lib/limonte-sweetalert2/sweetalert2.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/bootstrap/js/bootstrap.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#btnKayit").click(function () {
+            var vm = {
+                UserMail: $("#Mail").val(),
+                password: $("#Password").val()
+
+            };
+            var jss = JSON.stringify(vm);
+            $.ajax({
+                url: "http://localhost:25876/api/UserLogin/UserKayit",
+                data: jss,
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (user) {
+                    if (user != null) {
+
+                        swal("Tebrikler!", "Kayıt işlemin Başarılı :)!", "Başarılı :) ");
+                    }
+                },
+                failure: function (er) {
+                    console.log(er);
+                }
+            });
+        });
+    });
+
+</script>

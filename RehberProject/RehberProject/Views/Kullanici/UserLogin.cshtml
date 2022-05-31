@@ -1,0 +1,94 @@
+﻿@model Rehber.Entity.ViewModel.UserModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+    ViewData["Title"] = "UserLogin";
+}
+
+<link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+<body>
+    <div asp-validation-summary="All">
+
+    </div>
+
+    <main class="form-signin">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <center><img class="center" src="~/lib/bootstrap-icons/icons/book.svg" alt="" width="350" height="357"></center>
+                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+                <div class="form-floating">
+                    <label>Email Address</label>
+                    <input type="text" class="form-control" id="email" placeholder="name@example.com" asp-for="UserMail" required>
+                    <span asp-validation-for="UserMail"></span>
+
+
+                </div>
+                <div class="form-floating">
+                    <label class="bi-type-bold">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    <span asp-validation-for="Password"></span>
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button id="btnGonder" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                <label id="Label1"></label>
+
+                <a class="w-100 btn btn-lg btn btn-dark" href="/Kullanici/KayitEkle">Register Page</a>
+                <p class="mt-5 mb-3 text-muted">© 2022</p>
+            </div>
+        </div>
+    </main>
+
+
+</body>
+
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#btnGonder").click(function () {
+            var vm = {
+                UserMail: $("#email").val(),
+                Password: $("#password").val()
+
+            };
+            if (vm.UserMail == "" || vm.UserMail == undefined) {
+                toastr.error('Enter Mail Adress');
+            }
+
+            if (vm.Password == "" || vm.Password == undefined) {
+                toastr.error('Enter Password');
+                
+            }
+            var jss = JSON.stringify(vm);
+
+            $.ajax({
+                url: "/Kullanici/UserLogin",
+                data: jss,
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+
+                success: function (user) {
+                    if (user != null) {
+
+                        window.location.href = "/Kullanici/Listele"
+                    }
+                },
+                failure: function (er) {
+                    console.log(er);
+                }
+            });
+        });
+    });
+
+</script>
